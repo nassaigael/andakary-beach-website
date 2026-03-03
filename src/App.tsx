@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Header from './components/layout/Header';
 import './index.css';
+import Footer from './components/layout/Footer';
 
 function App() {
   // Sections de test avec des IDs pour la navigation
@@ -151,17 +152,7 @@ function App() {
         ))}
       </main>
 
-      {/* Footer simple */}
-      <footer className="bg-ocean-deep text-white py-8 text-center border-t border-white/10">
-        <div className="container mx-auto px-4">
-          <p className="text-beach-sand/60">
-            © 2026 Andakary City Beach - Tous droits réservés
-          </p>
-          <p className="text-sm text-white/40 mt-2">
-            17 km au Sud-est de Vohipeno | Tél: 034 64 419 00 / 034 06 348 48
-          </p>
-        </div>
-      </footer>
+    < Footer />
     </div>
   );
 }
