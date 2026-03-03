@@ -229,7 +229,7 @@ const Footer = () => {
 
         {/* Séparateur élégant */}
         <motion.div 
-          className="w-full h-px bg-gradient-to-r from-transparent via-[#7EC8E3] to-transparent opacity-20"
+          className="w-full h-px bg-linear-to-r from-transparent via-[#7EC8E3] to-transparent opacity-20"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 1 }}
@@ -293,7 +293,7 @@ const Footer = () => {
             viewport={{ once: true }}
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="w-9 h-9 md:w-10 md:h-10 bg-gradient-to-r from-[#7EC8E3] to-[#90B77D] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 order-3"
+            className="w-9 h-9 md:w-10 md:h-10 bg-linear-to-r from-[#7EC8E3] to-[#90B77D] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 order-3"
             aria-label="Retour en haut"
           >
             <HiOutlineArrowUp className="w-4 h-4 md:w-5 md:h-5" />
