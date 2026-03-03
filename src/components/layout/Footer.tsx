@@ -8,7 +8,6 @@ import {
   HiOutlineArrowUp,
   HiOutlineSun,
   HiOutlineUserGroup,
-  HiOutlineCamera,
   HiOutlineCalendar,
   HiOutlineCube,
   HiOutlineBeaker,
@@ -17,21 +16,12 @@ import {
 } from 'react-icons/hi';
 import { GiPalmTree, GiWaves, GiFishing, GiSoccerBall, GiBeachBall, GiCampfire } from 'react-icons/gi';
 import { FaFacebook, FaInstagram, FaWhatsapp, FaTripadvisor } from 'react-icons/fa';
-import { BsFillAwardFill, BsFillCalendarEventFill } from 'react-icons/bs';
+import { BsFillAwardFill } from 'react-icons/bs';
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const quickLinks = [
-    { name: 'Accueil', href: '#accueil', icon: <GiWaves className="w-4 h-4" /> },
-    { name: 'Activités', href: '#activites', icon: <BsFillAwardFill className="w-4 h-4" /> },
-    { name: 'Tarifs', href: '#tarifs', icon: <HiOutlineSun className="w-4 h-4" /> },
-    { name: 'Événements', href: '#evenements', icon: <BsFillCalendarEventFill className="w-4 h-4" /> },
-    { name: 'Galerie', href: '#galerie', icon: <HiOutlineCamera className="w-4 h-4" /> },
-    { name: 'Contact', href: '#contact', icon: <HiOutlinePhone className="w-4 h-4" /> },
-  ];
 
   const contactInfo = [
     { icon: <HiOutlinePhone className="w-5 h-5" />, text: '034 64 419 00 / 034 06 348 48', href: 'tel:0346441900' },
@@ -56,11 +46,12 @@ const Footer = () => {
     { name: 'Plage', icon: <GiBeachBall className="w-4 h-4" /> },
   ];
 
-  const services = [
+  const tarifs = [
+    { name: 'Droit de visite', price: '3 000 Ar', icon: <HiOutlineBeaker className="w-4 h-4" /> },
     { name: 'Chalet VIP', price: '10 000 Ar', icon: <HiOutlineCube className="w-4 h-4" /> },
-    { name: 'Nuitée', price: '40 000 Ar', icon: <HiOutlineCalendar className="w-4 h-4" /> },
     { name: 'Passage', price: '20 000 Ar', icon: <HiOutlineSun className="w-4 h-4" /> },
-    { name: 'Droit visite', price: '3 000 Ar', icon: <HiOutlineBeaker className="w-4 h-4" /> },
+    { name: 'Nuitée', price: '40 000 Ar', icon: <HiOutlineCalendar className="w-4 h-4" /> },
+    { name: 'T-Shirt', price: '25 000 Ar', icon: <HiOutlineGift className="w-4 h-4" /> },
   ];
 
   // Animation variants
@@ -144,47 +135,40 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Colonne 2 - Liens rapides - Caché sur mobile */}
-          <motion.div variants={itemVariants} className="hidden md:flex md:flex-col space-y-4 md:space-y-6">
+          {/* Colonne 2 - TARIFS (remplace les liens rapides) */}
+          <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 md:space-y-6">
             <h3 className="text-base md:text-lg font-bold text-[#F5E6D3] relative inline-block">
-              Liens rapides
-              <motion.span 
-                className="absolute -bottom-2 left-0 w-12 h-0.5 bg-linear-to-r from-[#7EC8E3] to-[#90B77D] rounded-full"
-                animate={{ width: ['0%', '100%', '0%'] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              />
+              Tarifs
+              <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-linear-to-r from-[#7EC8E3] to-[#90B77D] rounded-full"></span>
             </h3>
 
-            <ul className="space-y-2">
-              {quickLinks.map((link, index) => (
-                <motion.li
-                  key={link.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+            <div className="space-y-2 w-full">
+              {tarifs.map((tarif, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   transition={{ delay: index * 0.05 }}
                   viewport={{ once: true }}
+                  className="text-xs md:text-sm text-[#F5E6D3]/80 flex items-center justify-between md:justify-start md:space-x-3 border-b border-white/5 pb-1.5"
                 >
-                  <a
-                    href={link.href}
-                    className="text-[#F5E6D3]/70 hover:text-[#7EC8E3] transition-all duration-300 flex items-center space-x-2 group text-xs md:text-sm"
-                  >
-                    <span className="text-[#7EC8E3] group-hover:scale-110 transition-transform">
-                      {link.icon}
-                    </span>
-                    <span>{link.name}</span>
-                  </a>
-                </motion.li>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[#7EC8E3]">{tarif.icon}</span>
+                    <span>{tarif.name}</span>
+                  </div>
+                  <span className="text-[#F5E6D3] font-semibold bg-white/5 px-2 py-0.5 rounded-full text-[10px] md:text-xs">
+                    {tarif.price}
+                  </span>
+                </motion.div>
               ))}
-            </ul>
+            </div>
           </motion.div>
 
-          {/* Colonne 3 - Contact - Centré sur mobile */}
+          {/* Colonne 3 - Contact - Centré sur mobile - SANS animation sur soulignement */}
           <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 md:space-y-6">
             <h3 className="text-base md:text-lg font-bold text-[#F5E6D3] relative inline-block">
               Contact
-              <motion.span 
-                className="absolute -bottom-2 left-0 w-12 h-0.5 bg-linear-to-r from-[#7EC8E3] to-[#90B77D] rounded-full width-[100%] "
-              />
+              <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-linear-to-r from-[#7EC8E3] to-[#90B77D] rounded-full"></span>
             </h3>
 
             <ul className="space-y-3 md:space-y-4 w-full">
@@ -202,7 +186,7 @@ const Footer = () => {
                     rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="flex items-center justify-center md:justify-start space-x-3 text-[#F5E6D3]/70 hover:text-[#7EC8E3] transition-all duration-300 group"
                   >
-                    <span className="text-[#7EC8E3] group-hover:scale-110 group-hover:rotate-6 transition-transform">
+                    <span className="text-[#7EC8E3] group-hover:scale-110 transition-transform">
                       {item.icon}
                     </span>
                     <span className="text-xs md:text-sm">{item.text}</span>
@@ -212,13 +196,11 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Colonne 4 - Activités et services - Centré sur mobile */}
+          {/* Colonne 4 - Activités - Centré sur mobile - SANS animation sur soulignement */}
           <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 md:space-y-6">
             <h3 className="text-base md:text-lg font-bold text-[#F5E6D3] relative inline-block">
               Activités
-              <motion.span 
-                className="absolute -bottom-2 left-0 w-12 h-0.5 bg-linear-to-r from-[#7EC8E3] to-[#90B77D] rounded-full"
-              />
+              <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-linear-to-r from-[#7EC8E3] to-[#90B77D] rounded-full"></span>
             </h3>
 
             <div className="grid grid-cols-3 md:grid-cols-2 gap-2 w-full max-w-xs md:max-w-none mx-auto md:mx-0">
@@ -238,34 +220,16 @@ const Footer = () => {
               ))}
             </div>
 
-            {/* Services rapides */}
-            <div className="pt-2 md:pt-4 w-full">
-              <h4 className="text-xs md:text-sm font-semibold text-[#F5E6D3] mb-2 md:mb-3">Nos tarifs</h4>
-              <div className="space-y-1.5 md:space-y-2">
-                {services.map((service, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                    className="text-[10px] md:text-xs text-[#F5E6D3]/60 flex items-center justify-between md:justify-start md:space-x-2"
-                  >
-                    <div className="flex items-center space-x-1">
-                      <span className="text-[#90B77D]">{service.icon}</span>
-                      <span>{service.name}</span>
-                    </div>
-                    <span className="text-[#7EC8E3] font-medium ml-2">{service.price}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+            {/* Note supplémentaire */}
+            <p className="text-[#F5E6D3]/50 text-[8px] md:text-xs italic">
+              + d'autres activités sur place
+            </p>
           </motion.div>
         </motion.div>
 
         {/* Séparateur élégant */}
         <motion.div 
-          className="w-full h-px bg-linear-to-r from-transparent via-[#7EC8E3] to-transparent opacity-20"
+          className="w-full h-px bg-gradient-to-r from-transparent via-[#7EC8E3] to-transparent opacity-20"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 1 }}
@@ -329,7 +293,7 @@ const Footer = () => {
             viewport={{ once: true }}
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="w-9 h-9 md:w-10 md:h-10 bg-linear-to-r from-[#7EC8E3] to-[#90B77D] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 order-3"
+            className="w-9 h-9 md:w-10 md:h-10 bg-gradient-to-r from-[#7EC8E3] to-[#90B77D] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 order-3"
             aria-label="Retour en haut"
           >
             <HiOutlineArrowUp className="w-4 h-4 md:w-5 md:h-5" />
