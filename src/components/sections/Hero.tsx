@@ -10,6 +10,8 @@ import {
 } from 'react-icons/hi';
 import { GiPalmTree, GiBeachBall, GiCoconuts } from 'react-icons/gi';
 import slideOne from "../../assets/images/slides/slideOne.jpg";
+import slideTwo from "../../assets/images/slides/slideTwo.jpg";
+import slideThree from "../../assets/images/slides/slideThree.jpg";
 
 const Hero = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -25,14 +27,14 @@ const Hero = () => {
         },
         {
             id: 2,
-            url: slideOne,
+            url: slideTwo,
             title: "Couchers de soleil",
             subtitle: "Moments magiques",
             description: "Admirez des couchers de soleil spectaculaires aux couleurs flamboyantes. Un spectacle naturel inoubliable chaque soir."
         },
         {
             id: 3,
-            url: slideOne,
+            url: slideThree,
             title: "Forêt luxuriante",
             subtitle: "Nature préservée",
             description: "Explorez une forêt tropicale luxuriante riche en biodiversité. Des sentiers aménagés pour découvrir la faune et la flore locales."
